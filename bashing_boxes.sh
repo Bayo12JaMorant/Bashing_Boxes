@@ -42,7 +42,7 @@ objectGenerator=( "Puzzle" "Saw" "Surfboard" "Holly" "AvocadoTree" "Scanner" "Ty
   {
     sleep 1
     read -p "Which object would you like to remove?(0-9):" answer
-    unset 'objectGenerator'
+    unset 'objectGenerator $[answer[@]}'
     echo "${objectGenerator[@]}"
   }
 
