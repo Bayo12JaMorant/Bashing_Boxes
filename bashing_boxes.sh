@@ -16,6 +16,7 @@ objectGenerator=( "Puzzle" "Saw" "Surfboard" "Holly" "AvocadoTree" "Scanner" "Ty
   print_Item()
   {
    sleep 1
+   echo ""
    read -p "What Item would you like to pick? (0-9):" answer
    echo "Your item is: ${objectGenerator[$answer]}"
  	
@@ -24,6 +25,7 @@ objectGenerator=( "Puzzle" "Saw" "Surfboard" "Holly" "AvocadoTree" "Scanner" "Ty
   add_Item()
   {
     sleep 1
+    echo ""
     read -p "What is the name of the object you want to add?:" answer
     objectGenerator+=( $answer )
     echo "${objectGenerator[@]}"
@@ -33,6 +35,7 @@ objectGenerator=( "Puzzle" "Saw" "Surfboard" "Holly" "AvocadoTree" "Scanner" "Ty
   remove_Last_Item()
   {
     sleep 1
+    echo ""
     unset 'objectGenerator[9]'
     echo "The list of items is now... "
     echo "${objectGenerator[@]}"
@@ -41,9 +44,12 @@ objectGenerator=( "Puzzle" "Saw" "Surfboard" "Holly" "AvocadoTree" "Scanner" "Ty
   remove_Item()
   {
     sleep 1
+    echo ""
     read -p "Which object would you like to remove?(0-9):" answer
-    unset 'objectGenerator $[answer[@]}'
-    echo "${objectGenerator[@]}"
+    if [[ $answer -ge 0 && $answer -lt ${#objectGenerator[@]} ]]; then
+      unset 'objectGenerator[answer]'
+      echo "${objectGenerator[@]}"
+    fi  
   }
 
  
