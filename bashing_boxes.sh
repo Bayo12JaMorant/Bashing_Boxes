@@ -7,11 +7,9 @@ while true; do
   print_List()
   {
     echo "The list of items is..."
-      sleep 1
-      echo "${objectGenerator[@]}"
+    sleep 1
+    echo "${objectGenerator[@]}"
   }
-
-
 
   print_Item()
   {
@@ -19,7 +17,7 @@ while true; do
    echo ""
    read -p "What Item would you like to pick? (0-9):" answer
    echo "Your item is: ${objectGenerator[$answer]}"
-  }
+  0}
 
   add_Item()
   {
@@ -50,22 +48,42 @@ while true; do
     fi  
   }
 
-   
+   save_CurrentBox()
+   {
+
+   }
 
 
-  echo "The list of items is..."
-  sleep 2
-  echo "${objectGenerator[@]}"
+   load_PreviousBox()
+   {
+
+   }
+
+   list_ExistingBox()
+   {
+
+   }
+
+   delete_SavedBox()
+   {
+    
+   }
+
+
+  #echo "The list of items is..."
+  #sleep 2
+  #echo "${objectGenerator[@]}"
   #sleep 2
   #echo "${objectGenerator[4]}"
   #sleep 2
   #echo "${objectGenerator[8]}"
   #sleep 2
   #echo "${objectGenerator[0]}"
-  sleep 2
+  #sleep 2
 
   #print_Item
-    
+  echo "Welcome to the Object game!"
+  echo ""  
 
   echo "Full List of objects; 1"
   echo "Specific object at certain position; 2"
