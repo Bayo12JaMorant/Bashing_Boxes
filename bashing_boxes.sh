@@ -1,6 +1,6 @@
 #!/bin/bash
 
-
+touch  data.txt
 objectGenerator=( "Puzzle" "Saw" "Surfboard" "Holly" "AvocadoTree" "Scanner" "Typewriter" "Nightstand" "Mint" "TapeMeasure" )
   
 while true; do  
@@ -85,7 +85,7 @@ while true; do
   echo "Welcome to the Object game!"
   echo ""  
 
-  echo "Full List of objects; 1"
+  echo "Full Box of objects; 1"
   echo "Specific object at certain position; 2"
   echo "Adding a new item to the list; 3"
   echo "Remove the final item on the list; 4"
@@ -104,6 +104,7 @@ while true; do
       echo "Thanks for looking through the objects! "
       exit ;;
   esac
+  
 done
 
 
