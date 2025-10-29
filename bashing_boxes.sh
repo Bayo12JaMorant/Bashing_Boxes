@@ -4,42 +4,34 @@ touch  data.txt
 objectGenerator=( "Puzzle" "Saw" "Surfboard" "Holly" "AvocadoTree" "Scanner" "Typewriter" "Nightstand" "Mint" "TapeMeasure" )
   
 while true; do  
-  print_List()
-  {
+
+  print_List(){
     echo "The list of items is..."
     sleep 1
     echo "${objectGenerator[@]}"
   }
 
-  print_Item()
-  {
-
+  print_Item(){
    echo ""
    read -p "What Item would you like to pick? (0-9):" answer
    echo "Your item is: ${objectGenerator[$answer]}"
-  0}
+  }
 
-  add_Item()
-  {
-
+  add_Item(){
    echo ""
    read -p "What is the name of the object you want to add?:" answer
    objectGenerator+=( $answer )
-   echo "${objectGenerator[@]}"
+   print_List
   }
 
-  remove_Last_Item()
-  {
-      
+  remove_Last_Item(){
     echo ""
     unset 'objectGenerator[9]'
     echo "The list of items is now... "
     echo "${objectGenerator[@]}"
   }
 
-  remove_Item()
-  {
-
+  remove_Item(){
    echo ""
     read -p "Which object would you like to remove?(0-9):" answer
     if [[ $answer -ge 0 && $answer -lt ${#objectGenerator[@]} ]]; then
@@ -48,25 +40,24 @@ while true; do
     fi  
   }
 
-   save_CurrentBox()
-   {
-
+   save_CurrentBox(){
+  :
    }
 
 
    load_PreviousBox()
    {
-
+      :
    }
 
    list_ExistingBox()
    {
-
+      :
    }
 
    delete_SavedBox()
    {
-    
+    :
    }
 
 
@@ -104,7 +95,6 @@ while true; do
       echo "Thanks for looking through the objects! "
       exit ;;
   esac
-  
 done
 
 
