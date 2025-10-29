@@ -47,12 +47,15 @@ while true; do
       save_CurrentBox
     else 
       echo "Thanks for looking through the objects! "
-      exit ;;
+      exit 
     fi      
   }
 
    save_CurrentBox(){
-      :
+      read -p "What should I name your file? " answer
+      echo "${objectGenerator[@]}" > "data/$answer.txt"
+      echo "Your file has been saved as $answer.txt!"
+      sleep 2
    }
 
 
