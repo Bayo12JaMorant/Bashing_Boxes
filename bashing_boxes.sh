@@ -15,6 +15,7 @@ while true; do
    echo ""
    read -p "What Item would you like to pick? (0-9):" answer
    echo "Your item is: ${objectGenerator[$answer]}"
+   sleep 3
   }
 
   add_Item(){
@@ -40,8 +41,18 @@ while true; do
     fi  
   }
 
+  exit_Function(){
+    read -p "Would you like to save before exiting? (y/n) " answer
+    if [[ $answer == "y" ]]; then
+      save_CurrentBox
+    else 
+      echo "Thanks for looking through the objects! "
+      exit ;;
+    fi      
+  }
+
    save_CurrentBox(){
-  :
+      :
    }
 
 
@@ -73,7 +84,9 @@ while true; do
   #sleep 2
 
   #print_Item
+  echo ""
   echo "Welcome to the Object game!"
+  sleep 2
   echo ""  
 
   echo "Full Box of objects; 1"
@@ -82,8 +95,12 @@ while true; do
   echo "Remove the final item on the list; 4"
   echo "Remove a specific item from the list; 5"
   echo "Exit; 6"
+  echo "Saving your current Box to a file; 7"
+  echo "Loading a previously saved Box; 8"
+  echo "Listing existing saved Box; 9"
+  echo "Deleting a saved box; 10"
 
-  read -p "Which option would you like to choose?(1-6): " answer
+  read -p "Which option would you like to choose?(1-10): " answer
 
   case $answer in
     1) print_List ;;
@@ -91,9 +108,11 @@ while true; do
     3) add_Item ;;
     4) remove_Last_Item ;;
     5) remove_Item ;;
-    6)
-      echo "Thanks for looking through the objects! "
-      exit ;;
+    6) exit_Function ;;
+    7) save_CurrentBox ;;
+    8) load_PreviousBox ;;
+    9) list_ExistingBox ;;
+    10) delete_SavedBox ;; 
   esac
 done
 
