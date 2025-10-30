@@ -27,8 +27,11 @@ while true; do
 
   remove_Last_Item(){
     echo ""
-    unset 'objectGenerator[9]'
-    echo "The list of items is now... "
+    echo "Deleting the last one now!"
+    unset 'objectGenerator[-1]'
+    sleep 1
+    echo "After deleting the last item, this list of items is now... "
+    sleep 2
     echo "${objectGenerator[@]}"
   }
 
@@ -45,6 +48,9 @@ while true; do
     read -p "Would you like to save before exiting? (y/n) " answer
     if [[ $answer == "y" ]]; then
       save_CurrentBox
+      sleep 1
+      echo "Thanks for looking through the objects! "
+      exit
     else 
       echo "Thanks for looking through the objects! "
       exit 
@@ -59,19 +65,18 @@ while true; do
    }
 
 
-   load_PreviousBox()
-   {
+   load_PreviousBox(){
       :
    }
 
-   list_ExistingBox()
-   {
+   list_ExistingBox(){
       :
    }
 
-   delete_SavedBox()
-   {
-    :
+   delete_SavedBox(){
+    read -p "Which file do you want to delete? (Just the name, NO .txt) " answer
+    rm "data/$answer.txt"
+    echo "Your file $answer.txt has been deleted. "
    }
 
 
