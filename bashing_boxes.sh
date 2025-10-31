@@ -57,27 +57,36 @@ while true; do
     fi      
   }
 
-   save_CurrentBox(){
-      read -p "What should I name your file? " answer
-      echo "${objectGenerator[@]}" > "data/$answer.txt"
-      echo "Your file has been saved as $answer.txt!"
-      sleep 2
-   }
+  save_CurrentBox(){
+    read -p "What should I name your file? " answer 
+    echo "${objectGenerator[@]}" > "data/$answer.txt"
+    echo "Your file has been saved as $answer.txt!"
+    sleep 2
+  }
 
 
-   load_PreviousBox(){
-      :
-   }
+  load_PreviousBox(){
+    list_files="/home/jamorant/Bashing_Boxes/data"
+  }
 
-   list_ExistingBox(){
-      :
-   }
+ list_SavedBoxes(){
+    list_files=/home/jamorant/Bashing_Boxes/data
+    echo ""
+    echo "Every box you have saved is loadin in... "
+   sleep 2
+    echo ""
+    ls "$list_files"
+  }
 
-   delete_SavedBox(){
+ delete_SavedBox(){
+    list_files=/home/jamorant/Bashing_Boxes/data
+    sleep 2
+    echo ""
+    ls "$list_files"
     read -p "Which file do you want to delete? (Just the name, NO .txt) " answer
     rm "data/$answer.txt"
     echo "Your file $answer.txt has been deleted. "
-   }
+  }
 
 
   #echo "The list of items is..."
@@ -119,7 +128,7 @@ while true; do
     6) exit_Function ;;
     7) save_CurrentBox ;;
     8) load_PreviousBox ;;
-    9) list_ExistingBox ;;
+    9) list_SavedBoxes ;;
     10) delete_SavedBox ;; 
   esac
 done
