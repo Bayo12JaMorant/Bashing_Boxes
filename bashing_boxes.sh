@@ -5,27 +5,27 @@ objectGenerator=( "Puzzle" "Saw" "Surfboard" "Holly" "AvocadoTree" "Scanner" "Ty
   
 while true; do  
 
-  print_List(){
+  print_list(){
     echo "The list of items is..."
     sleep 1
     echo "${objectGenerator[@]}"
   }
 
-  print_Item(){
+  print_item(){
    echo ""
    read -p "What Item would you like to pick? (0-9):" answer
    echo "Your item is: ${objectGenerator[$answer]}"
    sleep 3
   }
 
-  add_Item(){
+  add_item(){
    echo ""
    read -p "What is the name of the object you want to add?:" answer
    objectGenerator+=( $answer )
    print_List
   }
 
-  remove_Last_Item(){
+  remove_last_item(){
     echo ""
     echo "Deleting the last one now!"
     unset 'objectGenerator[-1]'
@@ -35,8 +35,8 @@ while true; do
     echo "${objectGenerator[@]}"
   }
 
-  remove_Item(){
-   echo ""
+  remove_item(){
+    echo ""
     read -p "Which object would you like to remove?(0-9):" answer
     if [[ $answer -ge 0 && $answer -lt ${#objectGenerator[@]} ]]; then
       unset 'objectGenerator[answer]'
@@ -44,7 +44,7 @@ while true; do
     fi  
   }
 
-  exit_Function(){
+  exit_function(){
     read -p "Would you like to save before exiting? (y/n) " answer
     if [[ $answer == "y" ]]; then
       save_CurrentBox
@@ -57,7 +57,7 @@ while true; do
     fi      
   }
 
-  save_CurrentBox(){
+  save_current_box(){
     read -p "What should I name your file? " answer 
     echo "${objectGenerator[@]}" > "data/$answer.txt"
     echo "Your file has been saved as $answer.txt!"
@@ -65,25 +65,28 @@ while true; do
   }
 
 
-  load_PreviousBox(){
+  load_previous_box(){
     list_files="/home/jamorant/Bashing_Boxes/data"
+
+
+
   }
 
- list_SavedBoxes(){
+ list_saved_boxes(){
     list_files=/home/jamorant/Bashing_Boxes/data
     echo ""
-    echo "Every box you have saved is loadin in... "
-   sleep 2
-    echo ""
-    ls "$list_files"
-  }
-
- delete_SavedBox(){
-    list_files=/home/jamorant/Bashing_Boxes/data
+    echo "Every box you have saved is loading in... "
     sleep 2
     echo ""
     ls "$list_files"
-    read -p "Which file do you want to delete? (Just the name, NO .txt) " answer
+  }
+
+ delete_saved_box(){
+    list_files=/home/jamorant/Bashing_Boxes/data
+    sleep 2
+    ls "$list_files"
+    read -p "Which sudo apt install code
+    echo ""file do you want to delete? (Just the name, NO .txt) " answer
     rm "data/$answer.txt"
     echo "Your file $answer.txt has been deleted. "
   }
@@ -120,16 +123,16 @@ while true; do
   read -p "Which option would you like to choose?(1-10): " answer
 
   case $answer in
-    1) print_List ;;
-    2) print_Item ;;
-    3) add_Item ;;
-    4) remove_Last_Item ;;
-    5) remove_Item ;;
-    6) exit_Function ;;
-    7) save_CurrentBox ;;
-    8) load_PreviousBox ;;
-    9) list_SavedBoxes ;;
-    10) delete_SavedBox ;; 
+    1) print_list ;;
+    2) print_item ;;
+    3) add_item ;;
+    4) remove_last_item ;;
+    5) remove_item ;;
+    6) exit_function ;;
+    7) save_current_box ;;
+    8) load_previous_box ;;
+    9) list_saved_boxes ;;
+    10) delete_saved_box ;; 
   esac
 done
 
