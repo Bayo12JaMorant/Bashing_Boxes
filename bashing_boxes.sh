@@ -1,16 +1,18 @@
 #!/bin/bash
 
+
 touch  data.txt
 objectGenerator=( "Puzzle" "Saw" "Surfboard" "Holly" "AvocadoTree" "Scanner" "Typewriter" "Nightstand" "Mint" "TapeMeasure" )
   
 while true; do  
-
+  #function for the code to Print the full list of values in your array
   print_list(){
     echo "The list of items is..."
     sleep 1
     echo "${objectGenerator[@]}"
   }
-
+  
+  #funtion to print a direct value from the array. You must pick a number between 0 and 9, which represents
   print_item(){
    echo ""
    read -p "What Item would you like to pick? (0-9):" answer
@@ -67,7 +69,7 @@ while true; do
 
   load_previous_box(){
     list_files="/home/jamorant/Bashing_Boxes/data"
-
+    mapfile
 
 
   }
