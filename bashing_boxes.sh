@@ -1,10 +1,9 @@
 #!/bin/bash
 
 
-touch  data.txt
-objectGenerator=( "Puzzle" "Saw" "Surfboard" "Holly" "AvocadoTree" "Scanner" "Typewriter" "Nightstand" "Mint" "TapeMeasure" )
+  objectGenerator=( "Puzzle" "Saw" "Surfboard" "Holly" "AvocadoTree" "Scanner" "Typewriter" "Nightstand" "Mint" "TapeMeasure" )
   
-while true; do  
+  
   #function for the code to Print the full list of values in your array
   print_list(){
     echo "The list of items is..."
@@ -25,7 +24,7 @@ while true; do
    echo ""
    read -p "What is the name of the object you want to add?:" answer
    objectGenerator+=( $answer )
-   print_List
+   print_list
   }
 
   #this function creates a code that will delete the last value in your array
@@ -56,7 +55,7 @@ while true; do
   exit_function(){
     read -p "Would you like to save before exiting? (y/n) " answer
     if [[ $answer == "y" ]]; then
-      save_CurrentBox
+      save_current_box
       sleep 1
       echo "Thanks for looking through the objects! "
       exit
@@ -66,7 +65,7 @@ while true; do
     fi      
   }
 
-  # function creates a code to save your array to a file in the data/ directory
+  # Function creates a code to save your array to a file in the data/ directory
   save_current_box(){
     read -p "What should I name your file? " answer 
     echo "${objectGenerator[@]}" > "data/$answer.txt"
@@ -74,12 +73,17 @@ while true; do
     sleep 2
   }
 
-  # function creates a code to load a saved array from the data/ directory
+  # Function creates a code to load a saved array from the data/ directory
   load_previous_box(){
-    list_files="/home/jamorant/Bashing_Boxes/data"
-    mapfile
-
-
+    list_files=/home/jamorant/Bashing_Boxes/data
+    ls "$list_files"
+    echo ""
+    read -p "Which box would you like to load? " answer
+    mapfile objectGenerator < "data/$answer.txt"
+    sleep 1
+    echo "Box is loading in ..."
+    sleep 2
+    echo "${objectGenerator[@]}"
   }
 
   # Function creates a code that allows you to list all arrays you haved put in a file thats in the data/ directory
@@ -136,7 +140,6 @@ while true; do
     9) list_saved_boxes ;;
     10) delete_saved_box ;; 
   esac
-done
 
 
 
