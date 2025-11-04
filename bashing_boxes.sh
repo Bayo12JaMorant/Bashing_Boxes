@@ -12,7 +12,7 @@ while true; do
     echo "${objectGenerator[@]}"
   }
   
-  #funtion to print a direct value from the array. You must pick a number between 0 and 9, which represents
+  #funtion to print a direct value from the array.a You must pick a number between 0 and 9, which represents
   print_item(){
    echo ""
    read -p "What Item would you like to pick? (0-9):" answer
