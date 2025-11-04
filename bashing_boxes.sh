@@ -12,7 +12,7 @@ while true; do
     echo "${objectGenerator[@]}"
   }
   
-  #funtion to print a direct value from the array.a You must pick a number between 0 and 9, which represents
+  #funtion to print a direct value from the array.a You must pick a number between 0 and 9, which represents every item in the array
   print_item(){
    echo ""
    read -p "What Item would you like to pick? (0-9):" answer
@@ -20,6 +20,7 @@ while true; do
    sleep 3
   }
 
+  #This function creates a code to add another value to the backend of your array
   add_item(){
    echo ""
    read -p "What is the name of the object you want to add?:" answer
@@ -27,9 +28,12 @@ while true; do
    print_List
   }
 
+  #this function creates a code that will delete the last value in your array
   remove_last_item(){
     echo ""
     echo "Deleting the last one now!"
+    #before, i had this et as 'objectGenerator[9]', but I realize that putting 9 would only remove the last item in my origina array. so if i added more values
+    #, the item would not be deleted
     unset 'objectGenerator[-1]'
     sleep 1
     echo "After deleting the last item, this list of items is now... "
@@ -37,15 +41,18 @@ while true; do
     echo "${objectGenerator[@]}"
   }
 
+  #This function removes a specific value from your array
   remove_item(){
     echo ""
-    read -p "Which object would you like to remove?(0-9):" answer
+    #if the value (0-9) is greater than 0 and less than the # in your array, it will remove the exact value of the # from your array
+    read -p "Which object would you like to remove?(A number from 0 - the # in your box):" answer
     if [[ $answer -ge 0 && $answer -lt ${#objectGenerator[@]} ]]; then
       unset 'objectGenerator[answer]'
       echo "${objectGenerator[@]}"
     fi  
   }
 
+  # function allows you to exit the game. Gives you the option to save your array to a file before exiting
   exit_function(){
     read -p "Would you like to save before exiting? (y/n) " answer
     if [[ $answer == "y" ]]; then
@@ -59,6 +66,7 @@ while true; do
     fi      
   }
 
+  # function creates a code to save your array to a file in the data/ directory
   save_current_box(){
     read -p "What should I name your file? " answer 
     echo "${objectGenerator[@]}" > "data/$answer.txt"
@@ -66,7 +74,7 @@ while true; do
     sleep 2
   }
 
-
+  # function creates a code to load a saved array from the data/ directory
   load_previous_box(){
     list_files="/home/jamorant/Bashing_Boxes/data"
     mapfile
@@ -74,6 +82,7 @@ while true; do
 
   }
 
+  # Function creates a code that allows you to list all arrays you haved put in a file thats in the data/ directory
  list_saved_boxes(){
     list_files=/home/jamorant/Bashing_Boxes/data
     echo ""
@@ -83,29 +92,20 @@ while true; do
     ls "$list_files"
   }
 
+  # This function creates the code to delete a file from your data/ directory
  delete_saved_box(){
     list_files=/home/jamorant/Bashing_Boxes/data
     sleep 2
     ls "$list_files"
-    read -p "Which sudo apt install code
-    echo ""file do you want to delete? (Just the name, NO .txt) " answer
+    echo ""
+    read -p " Which file do you want to delete? (Just the name, NO .txt) " answer
+    echo ""
+    sleep 1
     rm "data/$answer.txt"
     echo "Your file $answer.txt has been deleted. "
   }
 
 
-  #echo "The list of items is..."
-  #sleep 2
-  #echo "${objectGenerator[@]}"
-  #sleep 2
-  #echo "${objectGenerator[4]}"
-  #sleep 2
-  #echo "${objectGenerator[8]}"
-  #sleep 2
-  #echo "${objectGenerator[0]}"
-  #sleep 2
-
-  #print_Item
   echo ""
   echo "Welcome to the Object game!"
   sleep 2
@@ -164,3 +164,17 @@ done
       #sleep 1
       #exit
     #fi 
+
+
+ #echo "The list of items is..."
+  #sleep 2
+  #echo "${objectGenerator[@]}"
+  #sleep 2
+  #echo "${objectGenerator[4]}"
+  #sleep 2
+  #echo "${objectGenerator[8]}"
+  #sleep 2
+  #echo "${objectGenerator[0]}"
+  #sleep 2
+
+  #print_Item
