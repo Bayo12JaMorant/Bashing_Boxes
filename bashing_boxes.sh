@@ -35,9 +35,7 @@
     #, the item would not be deleted
     unset 'objectGenerator[-1]'
     sleep 1
-    echo "After deleting the last item, this list of items is now... "
-    sleep 2
-    echo "${objectGenerator[@]}"
+    print_list
   }
 
   #This function removes a specific value from your array
@@ -110,37 +108,39 @@
   }
 
 
+  menu(){
+    echo -e "\nFull Box of objects; 1\nSpecific object at certain position; 2\nAdding a new item to the list; 3\nRemove the final item on the list; 4\nRemove a specific item from the list; 5\nExit; 6\nSaving your current Box to a file; 7\nLoading a previously saved Box; 8\nListing existing saved Box; 9\nDeleting a saved box; 10\n" 
+
+    echo ""
+
+    read -p "Which option would you like to choose?(1-10): " answer
+
+    case $answer in
+      1) print_list ;;
+      2) print_item ;;
+      3) add_item ;;
+      4) remove_last_item ;;
+      5) remove_item ;;
+      6) exit_function ;;
+      7) save_current_box ;;
+      8) load_previous_box ;;
+      9) list_saved_boxes ;;
+      10) delete_saved_box ;; 
+    esac
+
+
+
+    echo ""
+    menu
+  }  
+
+
+
   echo ""
   echo "Welcome to the Object game!"
   sleep 2
   echo ""  
-
-  echo "Full Box of objects; 1"
-  echo "Specific object at certain position; 2"
-  echo "Adding a new item to the list; 3"
-  echo "Remove the final item on the list; 4"
-  echo "Remove a specific item from the list; 5"
-  echo "Exit; 6"
-  echo "Saving your current Box to a file; 7"
-  echo "Loading a previously saved Box; 8"
-  echo "Listing existing saved Box; 9"
-  echo "Deleting a saved box; 10"
-
-  read -p "Which option would you like to choose?(1-10): " answer
-
-  case $answer in
-    1) print_list ;;
-    2) print_item ;;
-    3) add_item ;;
-    4) remove_last_item ;;
-    5) remove_item ;;
-    6) exit_function ;;
-    7) save_current_box ;;
-    8) load_previous_box ;;
-    9) list_saved_boxes ;;
-    10) delete_saved_box ;; 
-  esac
-
+  menu
 
 
 
