@@ -2,6 +2,7 @@
 clear
 
 objectGenerator=( "Puzzle" "Saw" "Surfboard" "Holly" "AvocadoTree" "Scanner" "Typewriter" "Nightstand" "Mint" "TapeMeasure" )
+# start part 4
   
   
 #function for the code to Print the full list of values in your array
