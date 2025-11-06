@@ -109,6 +109,10 @@ delete_saved_box(){
   echo "Your file $answer.txt has been deleted. "
 }
 
+generate_random_box(){
+  ;
+}
+
 
 menu(){
   echo -e "
