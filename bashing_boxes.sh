@@ -2,7 +2,6 @@
 clear
 
 objectGenerator=( "Puzzle" "Saw" "Surfboard" "Holly" "AvocadoTree" "Scanner" "Typewriter" "Nightstand" "Mint" "TapeMeasure" )
-# start part 4
   
   
 #function for the code to Print the full list of values in your array
@@ -111,6 +110,7 @@ delete_saved_box(){
 
 generate_random_box(){
   ;
+  
 }
 
 
@@ -142,6 +142,7 @@ menu(){
     8) load_previous_box ;;
     9) list_saved_boxes ;;
     10) delete_saved_box ;; 
+    11) generate_random_box ;;
   esac
 
   echo ""
