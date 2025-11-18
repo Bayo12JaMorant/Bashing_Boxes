@@ -110,7 +110,7 @@ delete_saved_box(){
 
 load_object_pool(){
 
-  shuf -n $random_answer "/home/jamorant/Bashing_Boxes/warehouse_of_objects.txt" > " /home/jamorant/Bashing_Boxes/random_file.txt"
+  shuf -n "$random_answer" "/home/jamorant/Bashing_Boxes/warehouse_of_objects.txt" > "/home/jamorant/Bashing_Boxes/random_file.txt"
 }
 
 prompt_for_box_size(){
@@ -128,10 +128,29 @@ generate_box_randomly(){
   load_object_pool
   prompt_for_box_size
   
-  mapfile -t objectGenerator < " /home/jamorant/Bashing_Boxes/random_file.txt"
+  mapfile -t objectGenerator < "/home/jamorant/Bashing_Boxes/random_file.txt"
 
-  echo "Created a new box with $random_answer items. "
-  
+  echo "Created a new box with $random_answer items. "  
+}
+
+search_box_for_item(){
+  :
+}
+
+search_file_for_item(){
+  :
+}
+
+sort_box_alphabet(){
+  :
+}
+
+build_box_from_filtered_items(){
+  :
+}
+
+duplicate_items_in_box(){
+  :
 }
 
 
@@ -148,6 +167,11 @@ menu(){
    Listing existing saved Box; 9
    Deleting a saved box; 10
    Generating A Random box from file; 11
+   Search your box for an item; 12
+   Search a file for item; 13
+   Sort a box in alphabetic order; 14
+   Build a box from filtered items; 15
+   Allowing Duplicate itmes in a randomized box; 16
   " 
   echo ""
   read -p "Which option would you like to choose?(1-11): " answer
