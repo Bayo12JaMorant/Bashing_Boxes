@@ -45,7 +45,7 @@ remove_item(){
   read -p "Which object would you like to remove?(A number from 0 - the # in your box):" answer
   if [[ $answer -ge 0 && $answer -lt ${#objectGenerator[@]} ]]; then
     unset 'objectGenerator[answer]'
-    echo "${objectGenerator[@]}"
+    echo "${objectGenerator[@]}" 
   fi  
 }
 
@@ -102,14 +102,35 @@ delete_saved_box(){
   ls "$list_files"
   echo ""
   read -p " Which file do you want to delete? (Just the name, NO .txt) " answer
-  echo ""
+  echo
   sleep 1
   rm "data/$answer.txt"
   echo "Your file $answer.txt has been deleted. "
 }
 
-generate_random_box(){
-  ;
+load_object_pool(){
+
+  shuf -n $random_answer "/home/jamorant/Bashing_Boxes/warehouse_of_objects.txt" > " /home/jamorant/Bashing_Boxes/random_file.txt"
+}
+
+prompt_for_box_size(){
+  
+  read -p "How many objects from the warehouse do you want to put in your box? (MUST BE BETWEEN 5 AND 25) " random_answer
+  if [[ $random_answer -gt 25 || $random_answer -lt 5 ]]; then
+    random_answer=10
+    echo "Not between 5 and 25; Your box will default to 10 random values"
+  fi  
+}
+
+
+generate_box_randomly(){
+  objectGenerator=()
+  load_object_pool
+  prompt_for_box_size
+  
+  mapfile -t objectGenerator < " /home/jamorant/Bashing_Boxes/random_file.txt"
+
+  echo "Created a new box with $random_answer items. "
   
 }
 
@@ -129,7 +150,7 @@ menu(){
    Generating A Random box from file; 11
   " 
   echo ""
-  read -p "Which option would you like to choose?(1-10): " answer
+  read -p "Which option would you like to choose?(1-11): " answer
 
   case $answer in
     1) print_list ;;
@@ -142,7 +163,7 @@ menu(){
     8) load_previous_box ;;
     9) list_saved_boxes ;;
     10) delete_saved_box ;; 
-    11) generate_random_box ;;
+    11) generate_box_randomly ;;
   esac
 
   echo ""
