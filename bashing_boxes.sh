@@ -4,13 +4,7 @@ clear
 objectGenerator=( "Puzzle" "Saw" "Surfboard" "Holly" "AvocadoTree" "Scanner" "Typewriter" "Nightstand" "Mint" "TapeMeasure" )
   
   
-#function for the code to Print the full list of values in your array
-print_list(){
-  echo "The list of items is..."
-  sleep 1
-  echo "${objectGenerator[@]}"
-}
-  
+
 #funtion to print a direct value from the array.a You must pick a number between 0 and 9, which represents every item in the array
 print_item(){
   echo ""
@@ -124,14 +118,23 @@ prompt_for_box_size(){
 
 
 generate_box_randomly(){
-  objectGenerator=()
+  prompt_for_box_size 
   load_object_pool
-  prompt_for_box_size
-  
-  mapfile -t objectGenerator < "/home/jamorant/Bashing_Boxes/random_file.txt"
 
-  echo "Created a new box with $random_answer items. "  
+  mapfile -t random_array < "/home/jamorant/Bashing_Boxes/random_file.txt"
+  objectGenerator=("${random_array[@]}")
+
+  echo "Created a new box with $random_answer items. "
+  echo "${random_array[@]}"  
 }
+
+#function for the code to Print the full list of values in your array
+print_list(){
+  echo "The list of items is..."
+  sleep 1
+  echo "${objectGenerator[@]}"
+}
+
 
 search_box_for_item(){
   :
@@ -174,7 +177,7 @@ menu(){
    Allowing Duplicate itmes in a randomized box; 16
   " 
   echo ""
-  read -p "Which option would you like to choose?(1-11): " answer
+  read -p "Which option would you like to choose?(1-16): " answer
 
   case $answer in
     1) print_list ;;
@@ -188,6 +191,11 @@ menu(){
     9) list_saved_boxes ;;
     10) delete_saved_box ;; 
     11) generate_box_randomly ;;
+    12) search_box_for_item ;;
+    13) search_file_for_item ;;
+    14) sort_box_alphabet ;;
+    15) build_box_from_filtered_items ;;
+    16) duplicate_items_in_box ;;
   esac
 
   echo ""
