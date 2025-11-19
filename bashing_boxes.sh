@@ -3,7 +3,12 @@ clear
 
 objectGenerator=( "Puzzle" "Saw" "Surfboard" "Holly" "AvocadoTree" "Scanner" "Typewriter" "Nightstand" "Mint" "TapeMeasure" )
   
-  
+#function for the code to Print the full list of values in your array
+print_list(){
+  echo "The list of items is..."
+  sleep 1
+  echo "${objectGenerator[@]}"
+}  
 
 #funtion to print a direct value from the array.a You must pick a number between 0 and 9, which represents every item in the array
 print_item(){
@@ -126,14 +131,11 @@ generate_box_randomly(){
 
   echo "Created a new box with $random_answer items. "
   echo "${random_array[@]}"  
+  sleep 2
+  print_list
 }
 
-#function for the code to Print the full list of values in your array
-print_list(){
-  echo "The list of items is..."
-  sleep 1
-  echo "${objectGenerator[@]}"
-}
+
 
 
 search_box_for_item(){
@@ -159,22 +161,22 @@ duplicate_items_in_box(){
 
 menu(){
   echo -e "
-   Full Box of objects; 1
-   Specific object at certain position; 2
-   Adding a new item to the list; 3
-   Remove the final item on the list; 4
-   Remove a specific item from the list; 5
-   Exit; 6
-   Saving your current Box to a file; 7
-   Loading a previously saved Box; 8
-   Listing existing saved Box; 9
-   Deleting a saved box; 10
-   Generating A Random box from file; 11
-   Search your box for an item; 12
-   Search a file for item; 13
-   Sort a box in alphabetic order; 14
-   Build a box from filtered items; 15
-   Allowing Duplicate itmes in a randomized box; 16
+   1) Full Box of objects
+   2) Specific object at certain position
+   3) Adding a new item to the list
+   4) Remove the final item on the list
+   5) Remove a specific item from the list
+   6) Exit
+   7) Saving your current Box to a file
+   8) Loading a previously saved Box
+   9) Listing existing saved Box
+   10) Deleting a saved box
+   11) Generating A Random box from file
+   12) Search your box for an item
+   13) Search a file for item
+   14) Sort a box in alphabetic order
+   15) Build a box from filtered items
+   16) Allowing Duplicate itmes in a randomized box
   " 
   echo ""
   read -p "Which option would you like to choose?(1-16): " answer
