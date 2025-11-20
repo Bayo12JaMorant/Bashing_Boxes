@@ -7,8 +7,9 @@ objectGenerator=( "Puzzle" "Saw" "Surfboard" "Holly" "AvocadoTree" "Scanner" "Ty
 print_list(){
   echo "The list of items is..."
   sleep 1
-  echo "${objectGenerator[@]}"
+  printf "%s\n" "${objectGenerator[@]}"
 }  
+
 
 #funtion to print a direct value from the array.a You must pick a number between 0 and 9, which represents every item in the array
 print_item(){
@@ -129,8 +130,7 @@ generate_box_randomly(){
   mapfile -t random_array < "/home/jamorant/Bashing_Boxes/random_file.txt"
   objectGenerator=("${random_array[@]}")
 
-  echo "Created a new box with $random_answer items. "
-  echo "${random_array[@]}"  
+  echo "Created a new box with $random_answer items. "  
   sleep 2
   print_list
 }
