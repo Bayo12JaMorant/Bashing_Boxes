@@ -1,6 +1,7 @@
 #!/bin/bash
 clear
 
+#Remove this to start Part 5
 objectGenerator=( "Puzzle" "Saw" "Surfboard" "Holly" "AvocadoTree" "Scanner" "Typewriter" "Nightstand" "Mint" "TapeMeasure" )
   
 #function for the code to Print the full list of values in your array
